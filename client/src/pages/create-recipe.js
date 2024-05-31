@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,17 @@ export const CreateRecipe = () => {
     cookingTime: 0,
     userOwner: userID,
   });
+  const [alertShown, setAlertShown] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userID && !alertShown) {
+      alert("Please login or register first.");
+      setAlertShown(true);
+      navigate("/auth");
+    }
+  }, [userID, alertShown, navigate]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

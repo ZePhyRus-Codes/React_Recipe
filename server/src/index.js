@@ -10,14 +10,18 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", userRouter);
+
 app.use("/recipes", recipesRouter);
 
 mongoose.connect(
-  "mongodb://localhost:27017/TheRecipeBook",
+  "mongodb+srv://usmankhatri18:Arham2016@cluster0.lbhyuxi.mongodb.net/TheRecipeDB?retryWrites=true&w=majority&appName=Cluster0",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
 );
+
+
+//  mongodb+srv://usmankhatri18:Arham2016@cluster0.lbhyuxi.mongodb.net/Cluster0?retryWrites=true&w=majority&appName=Cluster0
 
 app.listen(3001, () => console.log("Server started"));

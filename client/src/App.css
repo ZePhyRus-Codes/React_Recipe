@@ -56,11 +56,33 @@ input {
   height: 80px;
   background-color: black;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   color: white;
   text-decoration: none;
+  padding: 10px 20px;
 }
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  width: 140px;
+  margin-right: 250px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center; /* Center items vertically */
+}
+
+.navbar-right > * {
+  margin-left: 20px;
+}
+
+
 
 a {
   color: white;

@@ -6,6 +6,8 @@ import { verifyToken } from "./user.js";
 
 const router = express.Router();
 
+
+
 router.get("/", async (req, res) => {
   try {
     const result = await RecipesModel.find({});
@@ -45,6 +47,7 @@ router.post("/", verifyToken, async (req, res) => {
     res.status(500).json(err);
   }
 });
+// get https://localhost:3000/recipes:recipeId
 
 // Get a recipe by ID
 router.get("/:recipeId", async (req, res) => {

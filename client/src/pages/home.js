@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useGetUserID } from "../hooks/useGetUserID";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -31,7 +32,7 @@ export const Home = () => {
 
     fetchRecipes();
     fetchSavedRecipes();
-  }, []);
+  }, [userID]);
 
   const saveRecipe = async (recipeID) => {
     try {
@@ -54,7 +55,13 @@ export const Home = () => {
         {recipes.map((recipe) => (
           <li key={recipe._id}>
             <div>
-              <h2>{recipe.name}</h2>
+              <Link
+                to={`/recipes/${recipe._id}`}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <h2>{recipe.name}</h2>
+              </Link>
+
               <button
                 onClick={() => saveRecipe(recipe._id)}
                 disabled={isRecipeSaved(recipe._id)}
@@ -62,8 +69,8 @@ export const Home = () => {
                 {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
               </button>
             </div>
-            <div className="instructions">
-              <p>{recipe.instructions}</p>
+            <div className="description">
+              <p>{recipe.description}</p>
             </div>
             <img src={recipe.imageUrl} alt={recipe.name} />
             <p>Cooking Time: {recipe.cookingTime} minutes</p>
