@@ -21,7 +21,4 @@ mongoose.connect(
   }
 );
 
-
-//  mongodb+srv://usmankhatri18:Arham2016@cluster0.lbhyuxi.mongodb.net/Cluster0?retryWrites=true&w=majority&appName=Cluster0
-
 app.listen(3001, () => console.log("Server started"));
